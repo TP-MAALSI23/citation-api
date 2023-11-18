@@ -1,6 +1,8 @@
 # Use an official Python runtime as a parent image
 FROM python:3.12.0-slim
 
+LABEL org.opencontainers.image.source=https://github.com/tp-maalsi23/citation-api
+
 # Set the working directory to /app
 WORKDIR /app
 
