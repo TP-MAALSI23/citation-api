@@ -1,0 +1,15 @@
+version: "3.8"
+
+services: 
+  citation-api:
+    hostname: citation-api
+    container_name: citation-api
+    build: ./
+    volumes: 
+      - ./citation-api:/app:rw
+      - ./.env:/app/.env:ro
+      - ./requirements.txt:/app/requirements.txt:ro
+    ports:
+      - 3001:3001
+    stdin_open: true
+    command: sleep infinity
