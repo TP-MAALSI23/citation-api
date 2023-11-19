@@ -12,7 +12,7 @@ if os.getenv('APP_ENV') == 'dev':
     app.debug = True
 
 # Get the port number from the APP_PORT environment variable or use 5000 as a default
-port = int(os.getenv('APP_PORT', 5000))
+port = int(os.getenv('APP_PORT', 3000))
 
 # Define your API routes and functions here
 @app.route('/')

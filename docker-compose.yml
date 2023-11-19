@@ -7,9 +7,9 @@ services:
     build: ./
     volumes: 
       - ./citation-api:/app:rw
-      - ./.env:/app/.env:ro
-      - ./requirements.txt:/app/requirements.txt:ro
+    env_file:
+      - .env
     ports:
-      - 3001:3001
-    stdin_open: true
-    command: sleep infinity
+      - ${APP_PORT}
+    # stdin_open: true
+    # command: sleep infinity

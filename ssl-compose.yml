@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+
+  nginx:
+    container_name: nginx
+    image: nginx:1.25.3
+    env_file:
+      - .env
+    ports:
+      - 80:80
+      - 443:443
+    command: ["/bin/sh", "-c", "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+    volumes:
+      - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template
+      - ./nginx/letsencrypt-data:/etc/letsencrypt
+      - ./nginx/certbot-data:/var/www/certbot
+  
+  certbot:
+    container_name: certbot
+    image: certbot/certbot:latest
+    depends_on:
+      - nginx
+    command: >- 
+      certonly --reinstall --webroot --webroot-path=/var/www/certbot 
+      --email ${EMAIL} --agree-tos --no-eff-email
+      -d ${DOMAIN}
+    volumes:
+      - ./nginx/letsencrypt-data:/etc/letsencrypt
+      - ./nginx/certbot-data:/var/www/certbot
