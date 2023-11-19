@@ -4,7 +4,8 @@ services:
   citation-api:
     hostname: citation-api
     container_name: citation-api
-    build: ./
+    image: ghcr.io/tp-maalsi23/citation-api:0.1.0_x86
+    # build: ./
     volumes: 
       - ./citation-api:/app:rw
     env_file:
@@ -13,3 +14,28 @@ services:
       - ${APP_PORT}
     # stdin_open: true
     # command: sleep infinity
+  
+  nginx:
+    container_name: nginx
+    image: nginx:1.25.3
+    env_file:
+      - .env
+    ports:
+      - 80:80
+      - 443:443
+    command: ["/bin/sh", "-c", "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+    volumes:
+      - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template
+      - ./nginx/letsencrypt-data:/etc/letsencrypt
+      - ./nginx/certbot-data:/var/www/certbot
+  
+  certbot:
+    container_name: certbot
+    image: certbot/certbot:latest
+    depends_on:
+      - nginx
+    command: >- 
+      renew
+    volumes:
+      - ./nginx/letsencrypt-data:/etc/letsencrypt
+      - ./nginx/certbot-data:/var/www/certbot
