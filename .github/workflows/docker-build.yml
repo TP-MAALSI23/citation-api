@@ -1,0 +1,22 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - edge
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:edge .
+          docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:edge
