@@ -4,6 +4,7 @@ docker buildx build .  --platform linux/amd64 -t citation-api:0.1.0-x86
 
 # First install
 
+You need to fill the .env file check the [env content section](#env-content)
 Its a two step process.
 
 ## Init SSL certs
@@ -30,7 +31,10 @@ docker compose up certbot
 
 # .env content
 
+set to true to enable debug mode
 APP_ENV
-APP_PORT
-DOMAIN
-EMAIL
+default is 3000
+APP_PORT  
+the domain name to set in the nginx server config
+DOMAIN  
+EMAIL  
