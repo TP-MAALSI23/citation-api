@@ -3,7 +3,7 @@ name: Docker Build and Push
 on:
   push:
     branches:
-      - edge
+      - dev
 
 jobs:
   build-and-push:
@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
+
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      
+
       - name: Build and Push Docker Image
         run: |
-          docker build -t ghcr.io/tp-maalsi23/citation-api:edge .
-          docker push ghcr.io/tp-maalsi23/citation-api:edge
+          docker build -t ghcr.io/tp-maalsi23/citation-api:dev .
+          docker push ghcr.io/tp-maalsi23/citation-api:dev
