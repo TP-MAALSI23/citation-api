@@ -9,14 +9,17 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      packages: write
+
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Login to GitHub Container Registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          echo github.actor_id: ${{github.actor_id}}
 
       - name: Build and Push Docker Image
         run: |
