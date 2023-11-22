@@ -6,9 +6,11 @@ on:
       - dev
 
 jobs:
-  build-and-push:
+  build-and-push-image:
     runs-on: ubuntu-latest
+
     permissions:
+      contents: read
       packages: write
 
 
@@ -18,8 +20,7 @@ jobs:
 
       - name: Login to GitHub Container Registry
         run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          echo github.actor_id: ${{github.actor_id}}
+          echo docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push Docker Image
         run: |
