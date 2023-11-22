@@ -32,7 +32,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{github.repository}}:dev
+          tags: ghcr.io/tp-maalsi23/citation-api:dev
+          # tags: ghcr.io/${{ github.repository | replace('/', '_') | lower }}:dev
         # run: |
         #   docker build -t ghcr.io/tp-maalsi23/citation-api:dev .
         #   docker push ghcr.io/tp-maalsi23/citation-api:dev
