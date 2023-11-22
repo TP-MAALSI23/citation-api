@@ -24,16 +24,9 @@ jobs:
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
 
-        # run: |
-        #   echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ghcr.io/tp-maalsi23/citation-api:dev
-          # tags: ghcr.io/${{ github.repository | replace('/', '_') | lower }}:dev
-        # run: |
-        #   docker build -t ghcr.io/tp-maalsi23/citation-api:dev .
-        #   docker push ghcr.io/tp-maalsi23/citation-api:dev
