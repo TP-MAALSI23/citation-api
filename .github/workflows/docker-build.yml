@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      BRANCH_NAME: ${{ github.repository_owner | replace('/', '_') | lower}}
+      BRANCH_NAME: ${github.repository_owner,,}
 
     permissions:
       contents: read
