@@ -26,7 +26,7 @@ jobs:
       - name: Print Environment Variables
         run: |
           REPO=${REPO_RAW,,}>>$GITHUB_ENV
-          echo "Repository: ${{env.REPO}}"
+          echo "Repository: $REPO"
           echo "Branch name: $BRANCH_NAME"
           echo "Event name: $EVENT_NAME"
           echo "Actor: $ACTOR"
@@ -49,4 +49,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{env.REGISTRY}}/tp-maalsi23/citation-api:dev
+          tags: ${{env.REGISTRY}}/${REPO}:dev
