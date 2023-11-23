@@ -49,4 +49,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{env.REGISTRY}}/${REPO}:dev
+          tags: ${{env.REGISTRY}}/${{env.REPO}}:dev
