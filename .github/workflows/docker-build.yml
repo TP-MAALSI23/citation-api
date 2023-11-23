@@ -9,11 +9,18 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
 
+    env:
+      BRANCH_NAME: ${{ github.repository_owner | replace('/', '_') | lower}}
+
     permissions:
       contents: read
       packages: write
 
     steps:
+      - name: Print Environment Variables
+        run: |
+          echo "Branch name: $BRANCH_NAME"
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
