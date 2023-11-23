@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      REPO_RAW: ${{ github.repository }}
+      REPO: ${{ github.repository }}
       BRANCH_NAME: ${{github.ref_name}}
       EVENT_NAME: ${{github.event_name}}
       ACTOR: ${{github.actor}}
@@ -25,7 +25,6 @@ jobs:
     steps:
       - name: Print Environment Variables
         run: |
-          REPO=${REPO_RAW,,}>>$GITHUB_ENV
           echo "Repository: $REPO"
           echo "Branch name: $BRANCH_NAME"
           echo "Event name: $EVENT_NAME"
@@ -46,6 +45,6 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          REPO=${REPO_RAW,,}>>$GITHUB_ENV
-          docker build -t ${{env.REGISTRY}}/$REPO:dev .
-          docker push ${{env.REGISTRY}}/$REPO:dev
+          REPO_LC=${REPO,,}>>$GITHUB_ENV
+          docker build -t ${{env.REGISTRY}}/$REPO_LC:dev .
+          docker push ${{env.REGISTRY}}/$REPO_LC:dev
