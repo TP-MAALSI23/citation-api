@@ -5,7 +5,7 @@ from api import app
 
 class TestFlaskApp(unittest.TestCase):
 
-    def alwaysTrue()
+    def alwaysTrue():
         assertTrue(True)
 
 #     def setUp(self):
