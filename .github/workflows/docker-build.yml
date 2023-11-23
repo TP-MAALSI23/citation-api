@@ -10,7 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      OWNER: ${{ github.repository_owner }}
+      REPO_RAW: ${{ github.repository }}
+      EVENT_NAME: ${{github.event_name}}
+      ACTOR: ${{github.actor}}
+      JOBNAME: ${{github.job}}
+      RUN_NUMBER: ${{github.run_number}}
 
     permissions:
       contents: read
@@ -19,8 +23,12 @@ jobs:
     steps:
       - name: Print Environment Variables
         run: |
-          REPO_OWNER=${OWNER,,}>>$GITHUB_ENV
-          echo "Repository owner: $REPO_OWNER"
+          REPO=${REPO_RAW,,}>>$GITHUB_ENV
+          echo "Repository: $REPO"
+          echo "Event name: $EVENT_NAME"
+          echo "Actor: $ACTOR"
+          echo "Job name: $JOBNAME"
+          echo "Run number: $RUN_NUMBER"
 
       - name: Checkout Repository
         uses: actions/checkout@v4
