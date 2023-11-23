@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  build-and-push-image:
+  test-build-and-push-image:
     runs-on: ubuntu-latest
 
     env:
@@ -36,10 +36,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Get Dependencies
+        run: pip install -r requirements.txt
+
       - name: Run Unit Tests
-        run: |
-          pip install -r requirements.txt
-          python -m unittest discover -s citation-api -p '*_test.py'
+        run: python -m unittest discover -s citation-api -p '*_test.py'
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
