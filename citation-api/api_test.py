@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 from flask import Flask
-from api import app  # replace 'api' with the actual module name
+from api import app
 
 class TestFlaskApp(unittest.TestCase):
 
