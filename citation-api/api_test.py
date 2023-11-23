@@ -9,7 +9,7 @@ class TestFlaskApp(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
 
-    def alwaysTrue(self):
+    def test_always_true(self):
         self.assertTrue(True)
 
 #     @patch('api.os.getenv')
