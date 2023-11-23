@@ -37,5 +37,5 @@ class TestFlaskApp(unittest.TestCase):
 
 #     # Add more test cases for other routes and functionality as needed
 
-# if __name__ == '__main__':
-#     unittest.main()
+if __name__ == '__main__':
+    unittest.main()
