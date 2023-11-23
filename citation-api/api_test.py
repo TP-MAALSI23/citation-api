@@ -5,11 +5,12 @@ from api import app
 
 class TestFlaskApp(unittest.TestCase):
 
-    def alwaysTrue():
-        assertTrue(True)
 
-#     def setUp(self):
-#         self.app = app.test_client()
+    def setUp(self):
+        self.app = app.test_client()
+
+    def alwaysTrue(self):
+        self.assertTrue(True)
 
 #     @patch('api.os.getenv')
 #     def test_debug_mode_enabled_in_dev_env(self, mock_getenv):
