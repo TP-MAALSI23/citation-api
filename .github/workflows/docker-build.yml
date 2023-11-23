@@ -47,5 +47,5 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           REPO=${REPO_RAW,,}>>$GITHUB_ENV
-          echo "docker build -t ${{env.REGISTRY}}/$REPO:dev ."
-          echo "docker push ${{env.REGISTRY}}/$REPO:dev"
+          docker build -t ${{env.REGISTRY}}/$REPO:dev .
+          docker push ${{env.REGISTRY}}/$REPO:dev
