@@ -30,10 +30,10 @@ class TestFlaskApp(unittest.TestCase):
 #         with app.app_context():
 #             self.assertEqual(app.config['SERVER_NAME'], '0.0.0.0:3000')
 
-#     def test_hello_world_route(self):
-#         response = self.app.get('/')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertEqual(response.data.decode('utf-8'), 'Hello, World!')
+    def test_hello_world_route(self):
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode('utf-8'), 'Hello, World!')
 
 #     # Add more test cases for other routes and functionality as needed
 
