@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      BRANCH_NAME: ${github.repository_owner,,}
+      OWNER: ${{ github.repository_owner }}
 
     permissions:
       contents: read
@@ -19,7 +19,8 @@ jobs:
     steps:
       - name: Print Environment Variables
         run: |
-          echo "Branch name: $BRANCH_NAME"
+          echo "REPO_OWNER=${OWNER,,}" >>${GITHUB_ENV}
+          echo "Repository owner: $REPO_OWNER"
 
       - name: Checkout Repository
         uses: actions/checkout@v4
