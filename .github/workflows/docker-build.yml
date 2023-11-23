@@ -19,8 +19,8 @@ jobs:
     steps:
       - name: Print Environment Variables
         run: |
-          echo "REPO_OWNER=${OWNER,,}" >>${GITHUB_ENV}
-          echo "Repository owner: ${{env.REPO_OWNER}}"
+          REPO_OWNER=${OWNER,,}>>$GITHUB_ENV
+          echo "Repository owner: $REPO_OWNER
 
       - name: Checkout Repository
         uses: actions/checkout@v4
