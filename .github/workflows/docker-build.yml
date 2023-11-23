@@ -23,16 +23,6 @@ jobs:
       packages: write
 
     steps:
-      - name: Print Environment Variables
-        run: |
-          echo "Repository: $REPO"
-          echo "Branch name: $BRANCH_NAME"
-          echo "Event name: $EVENT_NAME"
-          echo "Actor: $ACTOR"
-          echo "Job name: $JOBNAME"
-          echo "Run number: $RUN_NUMBER"
-          echo "Registry: $REGISTRY"
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
