@@ -5,12 +5,15 @@ services:
     hostname: citation-api
     container_name: citation-api
     image: ghcr.io/tp-maalsi23/citation-api:0.1.0_x86
-    # build: ./
+    # build:
+    #   context: ./
+    #   dockerfile: Dockerfile_dev
     volumes: 
       - ./citation-api:/app:rw
     env_file:
       - .env
     ports:
+      # - 80:80
       - ${APP_PORT}
     # stdin_open: true
     # command: sleep infinity

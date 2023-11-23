@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from dotenv import load_dotenv
 import os
 
@@ -17,7 +17,9 @@ port = int(os.getenv('APP_PORT', 3000))
 # Define your API routes and functions here
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    name = request.args.get('prenom', "World")  # Default to 'World' if 'prenom' is not provided
+    # return f'Hello, {name}!'
+    return 'Hello, ' + name
 
 # Add more routes and functions as needed
 
