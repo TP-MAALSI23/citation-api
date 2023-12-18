@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  citation-api:
+    hostname: citation-api
+    container_name: citation-api
+    image: ghcr.io/tp-maalsi23/citation-api:0.1.0_x86
+    # build: ./
+    volumes:
+      - ./citation-api:/app:rw
+    env_file:
+      - .env
+    ports:
+      - ${APP_PORT}
+    # stdin_open: true
+    # command: sleep infinity
+  }
